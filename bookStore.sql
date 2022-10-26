@@ -1,28 +1,28 @@
-create database bookstore1;
-use bookstore1;
-create table authors1(
-	authors_id int not null auto_increment primary key,
-	authors_name varchar(20) not null,
-    authors_email varchar(200) not null
+create database bookstore1;										#created a new database of name: bookstore1
+use bookstore1;													#it specifies the file
+create table authors1(											#creates a new table, it has 3 columns: authors_id, authors_name, authors_email
+	authors_id int not null auto_increment primary key,			# primary key avoid dublications
+	authors_name varchar(20) not null,							# int or varchar are datatype parameters
+    authors_email varchar(200) not null							
 );
 
-insert into authors1 values 
+insert into authors1 values 									# 'insert into' means insert new item in the records
 (1, 'Premchand', 'abs@gmail.com'),
 (2, 'J.K. Rowling', 'abq@gmail.com'),
 (3, 'Willam Shakespare', 'asd@gmail.com'),
 (4, 'Yashpal', 'sf@gmail.com');
 
-create table books1 (
+create table books1 (											# 'books1' table created
 book_id int not null auto_increment primary key,
 book_name varchar(50) not null,
 book_type varchar(20) not null,
 book_price float not null, 
 book_stock varchar(20) not null,
 auth_id int,
-foreign key(auth_id) references authors1(authors_id)
+foreign key(auth_id) references authors1(authors_id)			#foreign key is a field, that refers the primary key to the another table
 );
 
-insert into books1 values
+insert into books1 values										# data inserted into the 'books1' table
 (1, 'Vardaan', 'Autobiography', 220 , 500, 1),
 (2, 'Seva Sadan', 'Poetry', 5485 , 500,2),
 (3, 'Harry Potter', 'Novels', 54 , 4,3),
@@ -36,20 +36,20 @@ insert into books1 values
 select * from books1;
 select * from authors1 JOIN books1 ON authors1.authors_id = books1.auth_id;
 
-create table customers1(
+create table customers1(										# 'customers1' table created
 cust_id int not null auto_increment primary key,
 cust_name varchar(255) not null,
 cust_no varchar(255) not null
 );
 
-insert into customers1 values 
+insert into customers1 values 									# data inserted into the 'customers1' table
 (1, 'Amit Kumar', '8787878778'),
 (2, 'Deepak', '989898998'),
 (3, 'Ashish', '9779979797'),
 (4, 'Suresh', '7997979797'),
 (5, 'Ramesh', '676767677667');
 
-create table favourites1(
+create table favourites1(										# 'favourites1' table created
 fav_id int not null auto_increment primary key,
 fav_book_name varchar(50) not null,
 fav_book_type varchar(20) not null,
@@ -57,7 +57,7 @@ c1_id int,
 foreign key(c1_id) references customers1(cust_id)
 );
 
-insert into favourites1 values 
+insert into favourites1 values 									# data inserted into the 'favourites1' table
 (1, 'Vardaan', 'Autobiography', 1),
 (2, 'Seva Sadan', 'Poetry', 2),
 (3, 'Harry Potter', 'Novels', 3),
